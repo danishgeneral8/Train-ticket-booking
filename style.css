@@ -1,0 +1,68 @@
+:root{
+  --bg:#f4f7fb;
+  --card:#ffffff;
+  --accent:#0b5cff;
+  --muted:#6b7280;
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --radius:12px;
+  --seat-size:84px;
+}
+*{box-sizing:border-box}
+html,body{height:100%; margin:0; padding:0; font-family:Inter,system-ui,Arial,sans-serif; background:var(--bg); color:#0f172a}
+.topbar{display:flex; align-items:center; justify-content:space-between; padding:14px 20px; background:linear-gradient(90deg,#fff,#f8fbff); box-shadow:0 2px 8px rgba(10,20,40,0.04)}
+.brand h1{margin:0; font-size:20px; color:var(--accent)}
+.brand small{color:var(--muted)}
+.top-actions{display:flex; gap:10px; align-items:center}
+.top-actions select, .top-actions button{padding:8px 10px; border-radius:8px; border:1px solid #e6eefc; background:#fff; cursor:pointer; font-size:14px}
+.container{display:flex; gap:20px; padding:22px; flex-wrap:wrap; justify-content:center}
+.card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px}
+.seat-card{width:640px}
+.instructions{color:var(--muted); font-size:13px; margin-bottom:8px}
+.seat-map{display:grid; grid-template-columns: repeat(4, var(--seat-size)); gap:12px; justify-content:center; padding:10px 0}
+.seat{width:var(--seat-size); height:64px; border-radius:10px; border:1px solid #e6eefc; display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer; background:#fff; transition:transform .08s ease}
+.seat:hover{transform:translateY(-4px)}
+.seat .label{font-weight:700}
+.seat .meta{font-size:12px; color:var(--muted)}
+.seat.available{background:linear-gradient(180deg,#ffffff,#f7fbff)}
+.seat.booked{background:linear-gradient(180deg,#eef6ff,#e1f0ff); border-color:#9ec0ff}
+.legend{display:flex; gap:12px; margin-top:12px; align-items:center; color:var(--muted)}
+.legend-item{display:flex; gap:8px; align-items:center}
+.dot{width:14px; height:14px; border-radius:4px; display:inline-block}
+.dot.available{background:#fff; border:1px solid #c6d8ff}
+.dot.booked{background:#9ec0ff}
+
+.summary-card{width:360px}
+.summary-stats{display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; margin-bottom:12px}
+.stat-num{font-size:18px; font-weight:700; margin-top:6px}
+.booked-list{max-height:260px; overflow:auto; border-top:1px dashed #eef2ff; padding-top:8px}
+.booked-item{display:flex; justify-content:space-between; padding:8px 6px; border-bottom:1px solid #f1f5fb}
+.no-data{color:var(--muted); padding:8px}
+
+/* modal */
+.modal{position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(7,12,20,0.45); z-index:60}
+.modal.hidden{display:none}
+.modal-box{width:360px; background:var(--card); border-radius:12px; padding:16px; box-shadow:var(--shadow); position:relative}
+.modal-close{position:absolute; right:10px; top:10px; background:transparent; border:0; font-size:16px; cursor:pointer}
+.form-row{margin-bottom:10px; display:flex; flex-direction:column}
+.form-row label{font-size:13px; color:var(--muted); margin-bottom:6px}
+.form-row input{padding:10px; border-radius:8px; border:1px solid #e6eefc; font-size:14px}
+.form-actions{display:flex; gap:8px; justify-content:flex-end; margin-top:8px}
+.form-actions button{padding:8px 12px; border-radius:8px; border:0; cursor:pointer; font-weight:600}
+#saveBtn{background:var(--accent); color:#fff}
+#cancelBtn{background:#eef2ff; color:var(--accent)}
+
+.ticket-preview{position:fixed; right:20px; bottom:20px; width:260px; background:linear-gradient(180deg,#fff,#f7fbff); border-radius:12px; padding:12px; box-shadow:var(--shadow); z-index:70}
+.ticket-preview.hidden{display:none}
+.ticket-content h3{margin:0 0 8px 0; color:var(--accent)}
+.ticket-content p{margin:6px 0; font-size:14px}
+.ticket-actions{display:flex; gap:8px; justify-content:flex-end; margin-top:10px}
+.ticket-actions button{padding:6px 8px; border-radius:8px; cursor:pointer}
+
+.footer{text-align:center; padding:12px; color:var(--muted); margin-top:18px}
+
+/* responsive */
+@media (max-width:900px){
+  .container{flex-direction:column; align-items:center}
+  .seat-card{width:94%}
+  .summary-card{width:94%}
+}

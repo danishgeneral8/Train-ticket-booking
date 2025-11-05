@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SkyRail — Booking</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>SkyRail</h1>
+      <small>Book your journey — fast and simple</small>
+    </div>
+
+    <div class="top-actions">
+      <label>
+        Coach:
+        <select id="coachSelect" aria-label="Select coach"></select>
+      </label>
+      <button id="resetBtn" title="Clear all bookings">Reset All</button>
+      <button id="downloadBtn" title="Download CSV">Download CSV</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card seat-card">
+      <h2>Seat Map</h2>
+
+      <div class="instructions">
+        Click on any available seat to book it. When booking you will enter:
+        departure, destination and journey date (type manually).
+      </div>
+
+      <div id="seatMap" class="seat-map"></div>
+
+      <div class="legend">
+        <span class="legend-item"><span class="dot available"></span> Available</span>
+        <span class="legend-item"><span class="dot booked"></span> Booked</span>
+      </div>
+    </section>
+
+    <aside class="card summary-card">
+      <h2>Summary</h2>
+
+      <div class="summary-stats">
+        <div>Total Seats <div id="totalSeats" class="stat-num">0</div></div>
+        <div>Booked <div id="bookedSeats" class="stat-num">0</div></div>
+        <div>Empty <div id="emptySeats" class="stat-num">0</div></div>
+        <div>Earnings <div id="earnings" class="stat-num">Rs.0</div></div>
+      </div>
+
+      <h3>Booked Details</h3>
+      <div id="bookedList" class="booked-list">
+        <div class="no-data">No bookings yet.</div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Booking modal -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button id="modalClose" class="modal-close" aria-label="Close">✕</button>
+      <h3 id="modalTitle">Book seat</h3>
+
+      <form id="bookForm">
+        <div class="form-row">
+          <label>Coach</label>
+          <input id="fmCoach" readonly />
+        </div>
+
+        <div class="form-row">
+          <label>Row</label>
+          <input id="fmRow" readonly />
+        </div>
+
+        <div class="form-row">
+          <label>Seat</label>
+          <input id="fmSeat" readonly />
+        </div>
+
+        <div class="form-row">
+          <label>Passenger name</label>
+          <input id="fmName" type="text" placeholder="Full name" required />
+        </div>
+
+        <div class="form-row">
+          <label>Age</label>
+          <input id="fmAge" type="number" min="0" max="150" placeholder="Age" required />
+        </div>
+
+        <div class="form-row">
+          <label>Departure (type)</label>
+          <input id="fmFrom" type="text" placeholder="e.g. Mumbai" required />
+        </div>
+
+        <div class="form-row">
+          <label>Destination (type)</label>
+          <input id="fmTo" type="text" placeholder="e.g. Surat" required />
+        </div>
+
+        <div class="form-row">
+          <label>Journey date (type)</label>
+          <input id="fmDate" type="text" placeholder="YYYY-MM-DD" required />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="saveBtn">Confirm booking</button>
+          <button type="button" id="cancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Ticket preview -->
+  <div id="ticketPreview" class="ticket-preview hidden">
+    <div class="ticket-content">
+      <h3>SkyRail Ticket</h3>
+      <p><strong>PNR:</strong> <span id="tPnr"></span></p>
+      <p><strong>Name:</strong> <span id="tName"></span></p>
+      <p><strong>From:</strong> <span id="tFrom"></span></p>
+      <p><strong>To:</strong> <span id="tTo"></span></p>
+      <p><strong>Date:</strong> <span id="tDate"></span></p>
+      <p><strong>Coach:</strong> <span id="tCoach"></span> <strong>Row:</strong> <span id="tRow"></span> <strong>Seat:</strong> <span id="tSeat"></span></p>
+      <p><strong>Age:</strong> <span id="tAge"></span></p>
+      <p><strong>Fare:</strong> Rs. <span id="tFare"></span></p>
+
+      <div class="ticket-actions">
+        <button id="closeTicket">Close</button>
+        <button id="downloadTicket">Download CSV Row</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <small>SkyRail — demo, stores data in your browser</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
