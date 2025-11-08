@@ -1,9 +1,4 @@
-/* SkyRail - client side booking
-   - manual entry for departure, destination, date
-   - 2 coaches, 5 rows, 4 seats
-   - save to localStorage
-   - generate PNR for each booking
-*/
+/* SkyRail booking script */
 
 // configuration
 var COACHES = 2;
@@ -348,4 +343,6 @@ function downloadTicketRow() {
 
 function escapeHtml(text) {
   return String(text).replace(/[&<>"']/g, function(ch) { return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]); });
-}
+    });
+  }
+
